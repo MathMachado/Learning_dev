@@ -29,7 +29,7 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
 Esqueça o `python -m venv`. Com o `uv`, seguimos este fluxo:
 
-### Passo 1: Inicie o projeto
+### Passo 3.1: Inicie o projeto
 
 Crie uma pasta e entre nela. Em seguida, digite:
 
@@ -40,7 +40,7 @@ uv init
 
 > **O que aconteceu?** O `uv` criou um arquivo `pyproject.toml` (o cérebro do seu projeto) e um `hello.py`.
 
-### Passo 2: Criando o ambiente e escolhendo a versão
+### Passo 3.2: Criando o ambiente e escolhendo a versão
 
 Quer usar o Python 3.12, mas não tem ele instalado? Sem problemas:
 
@@ -51,7 +51,7 @@ uv venv --python 3.12
 
 O `uv` vai baixar o Python 3.12 isoladamente para esse projeto e criar a pasta `.venv`. **É instantâneo.**
 
-### Passo 3: Ativando o ambiente
+### Passo 3.3: Ativando o ambiente
 
 Igual ao método tradicional:
 
@@ -110,7 +110,7 @@ Aqui está o passo a passo para fazer essa migração com segurança:
 
 ---
 
-### Passo 1: Inicialize o `uv` na pasta do projeto
+### Passo 6.1: Inicialize o `uv` na pasta do projeto
 
 Vá até a pasta onde está o seu arquivo `requirements.txt` e execute:
 
@@ -123,7 +123,7 @@ uv init
 
 ---
 
-### Passo 2: Importe as dependências
+### Passo 6.2: Importe as dependências
 
 Agora, em vez de instalar uma por uma, vamos dizer ao `uv` para ler o seu arquivo antigo e adicionar tudo ao novo formato:
 
@@ -136,7 +136,7 @@ uv add -r requirements.txt
 
 ---
 
-### Passo 3: Entenda a diferença dos arquivos
+### Passo 6.3: Entenda a diferença dos arquivos
 
 Após a conversão, você terá dois arquivos principais que substituem o antigo método:
 
@@ -145,17 +145,16 @@ Após a conversão, você terá dois arquivos principais que substituem o antigo
 
 ---
 
-### Passo 4: Limpeza (Opcional, mas recomendado)
+### Passo 6.4: Limpeza (Opcional, mas recomendado)
 
 Agora que suas dependências estão seguras no novo formato, você pode se livrar do passado:
 
-1. **Delete o `requirements.txt**` (ou renomeie para `.old` se estiver inseguro).
-2. **Delete a pasta `venv` antiga** (se você tiver uma):
-* Windows: `rmdir /s /q venv`
+6.4.1. **Delete o `requirements.txt**` (ou renomeie para `.old` se estiver inseguro).
+6.4.2. **Delete a pasta `venv` antiga** (se você tiver uma):
 * Mac/Linux: `rm -rf venv`
 
 
-3. **Crie o novo ambiente padrão do uv:**
+6.4.3. **Crie o novo ambiente padrão do uv:**
 ```bash
 uv venv
 
