@@ -55,9 +55,9 @@ O `uv` vai baixar o Python 3.12 isoladamente para esse projeto e criar a pasta `
 
 Igual ao método tradicional:
 
-* **Mac/Linux:** `source .venv/bin/activate`
-
----
+```bash
+source .venv/bin/activate
+```
 
 ## 4. Instalando pacotes (A mágica da velocidade)
 
