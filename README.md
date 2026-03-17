@@ -150,13 +150,14 @@ Agora que suas dependências estão seguras no novo formato, você pode se livra
 
 6.4.1. **Delete o `requirements.txt**` (ou renomeie para `.old` se estiver inseguro).
 6.4.2. **Delete a pasta `venv` antiga** (se você tiver uma):
-* Mac/Linux: `rm -rf venv`
 
+```bash
+rm -rf venv
+```
 
 6.4.3. **Crie o novo ambiente padrão do uv:**
 ```bash
 uv venv
-
 ```
 
 ---
