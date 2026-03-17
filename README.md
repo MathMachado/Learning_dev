@@ -15,7 +15,6 @@ O `uv` é uma ferramenta "tudo-em-um". Ele substitui o `pip` (instalador), o `ve
 
 Antes de tudo, você precisa do `uv` no seu sistema.
 
-* **macOS / Linux:**
 ```bash
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
