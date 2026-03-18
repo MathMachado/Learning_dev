@@ -178,10 +178,18 @@ Se você tinha um `requirements-dev.txt` (com coisas como `pytest` ou `black`), 
 
 ```bash
 uv add --dev pytest
-
 ```
 
 Isso separa o que é necessário para o sistema rodar do que é necessário apenas para você programar.
 
 
-# 2. Instalando Terraform
+# 2. Instalando Terraform no MacOS
+
+* Para instalar o Terraform, é necessário ter Homebrew instalado. Para instalar o Homebrew, siga o link a seguir: https://brew.sh/
+* Instale também o tfswitch. Para tal, siga a página a seguir: https://tfswitch.warrensbox.com/. O comando tfswitch permite alterar entre as várias versões do Terraform instalado no seu computador.
+* Se você não quiser usar o tfswitch para escolher a versão do Terraform, use o comando a seguir para instalar o Terraform manualmente:
+
+```bash
+brew install terraform
+```
+
