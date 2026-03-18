@@ -193,3 +193,10 @@ Isso separa o que é necessário para o sistema rodar do que é necessário apen
 brew install terraform
 ```
 
+Verifique a versão instalada:
+
+```bash
+terraform --version
+```
+
+
