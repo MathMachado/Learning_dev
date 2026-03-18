@@ -1,17 +1,17 @@
-# Learning_dev
+# 1. Learning uv
 Descrever boas práticas de desenvolvimento de AIs e Dados
 
 Obs.: 
 a. Todos os comandos aqui se aplicam ao MacOS/Linux
 b. Com o **uv**, você não precisa mais baixar o Python no site oficial. Ele faz tudo. Ele é absurdamente rápido e resolve um problema que o `pip` nunca resolveu bem: ele gerencia o próprio Python para você.
 
-## 1. O que é o uv?
+# 1.1. O que é o uv?
 
 O `uv` é uma ferramenta "tudo-em-um". Ele substitui o `pip` (instalador), o `venv` (ambientes virtuais), o `pip-tools` (trava de versões) e até o `pyenv` (instalador de versões do Python).
 
 ---
 
-## 2. Instalação (Só uma vez)
+# 1.2. Instalação (Só uma vez)
 
 Antes de tudo, você precisa do `uv` no seu sistema.
 
@@ -24,11 +24,11 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
 ---
 
-## 3. Criando um Projeto do Zero (O jeito moderno)
+# 1.3. Criando um Projeto do Zero (O jeito moderno)
 
 Esqueça o `python -m venv`. Com o `uv`, seguimos este fluxo:
 
-### Passo 3.1: Inicie o projeto
+## Passo 1.3.1: Inicie o projeto
 
 Crie uma pasta e entre nela. Em seguida, digite:
 
@@ -39,7 +39,7 @@ uv init
 
 > **O que aconteceu?** O `uv` criou um arquivo `pyproject.toml` (o cérebro do seu projeto) e um `hello.py`.
 
-### Passo 3.2: Criando o ambiente e escolhendo a versão
+## Passo 1.3.2: Criando o ambiente e escolhendo a versão
 
 Quer usar o Python 3.12, mas não tem ele instalado? Sem problemas:
 
@@ -50,7 +50,7 @@ uv venv --python 3.12
 
 O `uv` vai baixar o Python 3.12 isoladamente para esse projeto e criar a pasta `.venv`. **É instantâneo.**
 
-### Passo 3.3: Ativando o ambiente
+## Passo 1.3.3: Ativando o ambiente
 
 Igual ao método tradicional:
 
@@ -58,7 +58,7 @@ Igual ao método tradicional:
 source .venv/bin/activate
 ```
 
-## 4. Instalando pacotes (A mágica da velocidade)
+# 1.4. Instalando pacotes (A mágica da velocidade)
 
 Em vez de `pip install`, usamos `uv add`.
 
@@ -69,12 +69,12 @@ uv add pandas requests
 
 **Por que isso é melhor que o pip?**
 
-1. **Velocidade:** Ele instala em milissegundos usando cache compartilhado.
-2. **Lockfile:** Ele cria automaticamente um arquivo `uv.lock`. Esse arquivo garante que qualquer pessoa que baixar seu projeto terá **exatamente** as mesmas versões de bibliotecas que você, evitando o famoso "na minha máquina funciona".
+1.4.1. **Velocidade:** Ele instala em milissegundos usando cache compartilhado.
+1.4.2. **Lockfile:** Ele cria automaticamente um arquivo `uv.lock`. Esse arquivo garante que qualquer pessoa que baixar seu projeto terá **exatamente** as mesmas versões de bibliotecas que você, evitando o famoso "na minha máquina funciona".
 
 ---
 
-## 5. Resumo de Comandos "uv" vs "Tradicional"
+# 1.5. Resumo de Comandos "uv" vs "Tradicional"
 
 | Ação | Jeito Antigo (Slow) | Jeito uv (Fast ⚡) |
 | --- | --- | --- |
@@ -86,7 +86,7 @@ uv add pandas requests
 
 ---
 
-## Dica de Ouro: `uv run`
+# Dica de Ouro: `uv run`
 
 Você nem precisa ativar o ambiente para rodar algo. Se você digitar:
 
@@ -98,7 +98,7 @@ uv run python main.py
 O `uv` detecta o ambiente, garante que as dependências estão instaladas e roda o script. Se o ambiente não existir, ele cria na hora.
 
 
-## 6. Usando uv juntamente com o arquivo requirements.txt
+# 1.6. Usando uv juntamente com o arquivo requirements.txt
 
 
 Converter um projeto do `requirements.txt` para o **uv** é como trocar um motor a combustão por um elétrico: o carro fica mais leve, mais rápido e muito mais fácil de dar manutenção.
@@ -109,7 +109,7 @@ Aqui está o passo a passo para fazer essa migração com segurança:
 
 ---
 
-### Passo 6.1: Inicialize o `uv` na pasta do projeto
+## Passo 1.6.1: Inicialize o `uv` na pasta do projeto
 
 Vá até a pasta onde está o seu arquivo `requirements.txt` e execute:
 
@@ -122,7 +122,7 @@ uv init
 
 ---
 
-### Passo 6.2: Importe as dependências
+## Passo 1.6.2: Importe as dependências
 
 Agora, em vez de instalar uma por uma, vamos dizer ao `uv` para ler o seu arquivo antigo e adicionar tudo ao novo formato:
 
@@ -135,7 +135,7 @@ uv add -r requirements.txt
 
 ---
 
-### Passo 6.3: Entenda a diferença dos arquivos
+## Passo 1.6.3: Entenda a diferença dos arquivos
 
 Após a conversão, você terá dois arquivos principais que substituem o antigo método:
 
@@ -144,25 +144,25 @@ Após a conversão, você terá dois arquivos principais que substituem o antigo
 
 ---
 
-### Passo 6.4: Limpeza (Opcional, mas recomendado)
+## Passo 1.6.4: Limpeza (Opcional, mas recomendado)
 
 Agora que suas dependências estão seguras no novo formato, você pode se livrar do passado:
 
-6.4.1. **Delete o `requirements.txt**` (ou renomeie para `.old` se estiver inseguro).
-6.4.2. **Delete a pasta `venv` antiga** (se você tiver uma):
+1.6.4.1. **Delete o `requirements.txt**` (ou renomeie para `.old` se estiver inseguro).
+1.6.4.2. **Delete a pasta `venv` antiga** (se você tiver uma):
 
 ```bash
 rm -rf venv
 ```
 
-6.4.3. **Crie o novo ambiente padrão do uv:**
+1.6.4.3. **Crie o novo ambiente padrão do uv:**
 ```bash
 uv venv
 ```
 
 ---
 
-### Como trabalhar a partir de agora?
+## Como trabalhar a partir de agora?
 
 Esqueça o `pip`. Sua rotina agora será:
 
@@ -172,7 +172,7 @@ Esqueça o `pip`. Sua rotina agora será:
 
 ---
 
-### Dica de Especialista: Dependências de Desenvolvimento
+## Dica de Especialista: Dependências de Desenvolvimento
 
 Se você tinha um `requirements-dev.txt` (com coisas como `pytest` ou `black`), o `uv` tem um lugar especial para isso:
 
@@ -184,3 +184,4 @@ uv add --dev pytest
 Isso separa o que é necessário para o sistema rodar do que é necessário apenas para você programar.
 
 
+# 2. Instalando Terraform
